@@ -1,1 +1,51 @@
-coming soon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Food Eater</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+        }
+        #foodImage {
+            display: none;
+            width: 250px;
+            height: auto;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="goButton">Go</button>
+    <img id="foodImage" src="your-image-url-here.jpg" alt="Food" />
+    <div id="result"></div>
+
+    <script>
+        let foodEaten = 0;
+
+        document.getElementById('goButton').onclick = function() {
+            foodEaten = 0;
+            document.getElementById('foodImage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('foodImage').style.display = 'none';
+                document.getElementById('result').innerText = `You ate ${foodEaten} food items per second.`;
+            }, 1000);
+        };
+
+        document.getElementById('foodImage').onclick = function() {
+            foodEaten++;
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => this.style.transform = 'scale(1)', 100);
+        };
+    </script>
+</body>
+</html>
